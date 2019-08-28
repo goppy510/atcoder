@@ -8,7 +8,7 @@ a = 0
 for i in range((N+1)):
   b = i
   lst = []
-  if i >= A and i <= B:
+  if i >= A and i <= B and len(str(i)) < 2:
     total.append(i)
   else:
     while i > 0:
