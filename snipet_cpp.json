@@ -1,0 +1,160 @@
+{
+	// Place your snippets for cpp here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"gcd": {
+		"prefix": "gcd",
+		"body": [
+			"ll gcd(ll a, ll b) {return b ? gcd(a, a%b) : a;}"
+		]
+		"description": "ユークリッドの互除法"
+	},
+	"lcm": {
+		"prefix": "lcm",
+		"body": [
+			"ll lcm(ll a, ll b) {return a*b/gcd(a,b);}"
+		]
+		"description": "最小公倍数"
+	},
+	"ngcd": {
+		"prefix": "ngcd",
+		"body": [
+			"ll ngcd(vector<ll> a) {",
+			"\tll res;",
+			"\tres = a[0];",
+			"\tfor(ll i=1; i<a.size() && res !=1; ++i) {",
+			"\t\tres = gcd(a[i], res);"
+			"\t}",
+			"\treturn res;",
+			"}"
+		]
+		"description": "n個の最大公約数"
+	},
+	"nlcm": {
+		"prefix": "nlcm",
+		"body": [
+			"ll nlcm(vector<ll> a) {",
+			"\tll res;",
+			"\tres = a[0];",
+			"\tfor(ll i=1; i<a.size(); ++i) {",
+			"\t\tres = lcm(res, a[i]);",
+			"\t}"
+			"\treturn res;",
+			"}"
+		]
+		"description": "n個の最小公倍数"
+	},
+	"eratosthenes": {
+		"prefix": "eratos",
+		"body": [
+			"vector<int> eratosthenes(const int n) {",
+			"\tvector<bool> isPrime(n+1, true);",
+			"\tvector<int> p;",
+			"\tfor(int i=1; i<=n; ++i) {",
+			"\t\tif(isPrime[i]) {",
+			"\t\t\tfor(int j=2*i; j<=n; j+=i;) {",
+			"\t\t\t\tisPrime[i] = false;",
+			"\t\t\t}",
+			"\t\t\tp.pb(i);",
+			"\t\t}",
+			"\t}",
+			"\treturn p;"
+		]
+		"description": "エラトステネスのふるい"
+	},
+	"isPrime": {
+		"prefix": "isPrime",
+		"body": [
+			"bool isPrime(int x) {",
+			"\tif (x<2) return 0;",
+			"\telse if (x==2) return 1;",
+			"\tif (x%2==0) return 0l",
+			"\tfor(i=3; i*i<=x; i+=2) if(x%i==0) return 0;",
+			"\treturn 1;",
+			"}"
+		]
+		"description": "素数判定"
+	},
+	"digsum": {
+		"prefix": "digsum",
+		"body": [
+			"int digsum(ll n) {",
+			"\tll res = 0;",
+			"\twhile(n>0) {",
+			"\t\tres+=n%10;",
+			"\t\tn/=10;",
+			"\t}",
+			"\treturn res;",
+			"}"
+		]
+		"description": "各桁の和を求める"
+	},
+	"dignum": {
+		"prefix": "dignum",
+		"body": [
+			"int digsum(ll n) {",
+			"\tll res = 0;",
+			"\twhile(n>0) {",
+			"\t\tres++;",
+			"\t\tn/=10;",
+			"\t}",
+			"\treturn res;",
+			"}"
+		]
+		"description": "桁数を求める"
+	},
+	"enumdiv": {
+		"prefix": "enumDiv",
+		"body": [
+			"vector<int> enumDiv(int n) {",
+			"\tvector<int> ret;",
+			"\tfor(int i=1; i*i<=n; ++i) {",
+			"\t\tif(n%i==0) {",
+			"\t\t\tret.pb(i);",
+			"\t\t\tif(i!=1; && i*i!=n) ret.pb(n/i);",
+			"\t\t}",
+			"\t}",
+			"\treturn ret;";
+			"}"
+		]
+		"description": "約数列挙"
+	},
+	"cominit": {
+		"prefix": "comInit",
+		"body": [
+			"void comInit() {",
+			"\tfac[0]=fac[1]=1;",
+			"\tfinv[0]=finv[1]=1;",
+			"\tinv[1]=1;",
+			"\tfor(int i=2; i<MAX; ++i) {",
+			"\t\tfac[i]=fac[i-1]*i%MOD;",
+			"\t\tinv[i]=MOD-inv[MOD%i]*(MOD/i)%MOD;",
+			"\t\tfinv[i]=finv[i-1]*inv[i]%MOD;",
+			"\t}",
+			"}"
+		]
+		"description": "組み合わせテーブル作成"
+	},
+	"com": {
+		"prefix": "com",
+		"body": [
+			"ll com(int n, intk) {",
+			"\tif(n<k) return 0;",
+			"\tif(n<0 || k<0) return 0;",
+			"\treturn fac[n]*(finv[k]*finv[n-k]%MOD)%MOD;",
+			"}"
+		]
+		"description": "二項係数を計算"
+	}
+
+}
