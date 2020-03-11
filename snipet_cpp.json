@@ -1,17 +1,4 @@
 {
-	// Place your snippets for cpp here. Each snippet is defined under a snippet name and has a prefix, body and 
-	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
-	// same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
 	"gcd": {
 		"prefix": "gcd",
 		"body": [
@@ -124,37 +111,48 @@
 			"\t\t\tif(i!=1; && i*i!=n) ret.pb(n/i);",
 			"\t\t}",
 			"\t}",
-			"\treturn ret;";
+			"\treturn ret;"
 			"}"
 		]
 		"description": "約数列挙"
 	},
-	"cominit": {
-		"prefix": "comInit",
+	"modPow": {
+		"prefix": "modPow",
 		"body": [
-			"void comInit() {",
-			"\tfac[0]=fac[1]=1;",
-			"\tfinv[0]=finv[1]=1;",
-			"\tinv[1]=1;",
-			"\tfor(int i=2; i<MAX; ++i) {",
-			"\t\tfac[i]=fac[i-1]*i%MOD;",
-			"\t\tinv[i]=MOD-inv[MOD%i]*(MOD/i)%MOD;",
-			"\t\tfinv[i]=finv[i-1]*inv[i]%MOD;",
-			"\t}",
+			"ll modPow(ll x, ll n) {",
+			"\tif(n==0) return 1;",
+			"\tll res = modPow(x*x%MOD, n/2);",
+			"\tif(n&1) res=res*x%MOD;",
+			"\treturn res;",
 			"}"
 		]
-		"description": "組み合わせテーブル作成"
+		"description": "mod累乗計算"
+	},
+	"multi": {
+		"prefix": "multi",
+		"body": [
+			"ll mul(ll l, ll r) {",
+			"\tll ret =1;",
+			"\tfor(int i=0; i<l-r+1; ++i) {",
+			"\t\tret*=i+r;",
+			"\t\tret%=MOD;",
+			"\t}",
+			"\treturn ret;",
+			"}"
+		]
+		"description": "累積掛け算"
 	},
 	"com": {
 		"prefix": "com",
 		"body": [
-			"ll com(int n, intk) {",
-			"\tif(n<k) return 0;",
-			"\tif(n<0 || k<0) return 0;",
-			"\treturn fac[n]*(finv[k]*finv[n-k]%MOD)%MOD;",
+			"ll com(ll n, ll k) {",
+			"\tll ret1 = mul(n,n-k+1);",
+			"\tll ret2 = mul(k,1);",
+			"\tll ret3 = modPow(ret2, MOD-2);",
+			"\treturn ret1*ret3%MOD;",
 			"}"
 		]
-		"description": "二項係数を計算"
-	}
+		"description": "二項係数計算"
+	},	
 
 }
