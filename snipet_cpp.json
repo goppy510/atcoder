@@ -55,7 +55,8 @@
 			"\t\t\tp.pb(i);",
 			"\t\t}",
 			"\t}",
-			"\treturn p;"
+			"\treturn p;",
+			"}"
 		]
 		"description": "エラトステネスのふるい"
 	},
@@ -65,8 +66,8 @@
 			"bool isPrime(int x) {",
 			"\tif (x<2) return 0;",
 			"\telse if (x==2) return 1;",
-			"\tif (x%2==0) return 0l",
-			"\tfor(i=3; i*i<=x; i+=2) if(x%i==0) return 0;",
+			"\tif (x%2==0) return 0;",
+			"\tfor(int i=3; i*i<=x; i+=2) if(x%i==0) return 0;",
 			"\treturn 1;",
 			"}"
 		]
